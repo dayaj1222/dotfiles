@@ -1,0 +1,58 @@
+# Mako configuration with Pywal colors
+# Save as: ~/.config/wal/templates/mako
+# Will be generated to: ~/.cache/wal/mako
+
+# Appearance
+font=JetBrains Nerd Font Mono 14
+background-color={background}
+text-color={foreground}
+border-color={color5}
+border-size=2
+border-radius=2
+padding=10
+margin=8
+
+# Icons
+icons=1
+max-icon-size=200
+icon-path=/usr/share/icons/Papirus-Dark
+
+# Layout
+width=400
+height=600
+anchor=top-right
+default-timeout=3000
+ignore-timeout=0
+
+# Grouping
+group-by=app-name
+
+# Urgency levels
+[urgency=low]
+background-color={color0}
+text-color={foreground}
+border-color={color4}
+default-timeout=3000
+
+[urgency=normal]
+background-color={color0}
+text-color={foreground}
+border-color={color5}
+default-timeout=5000
+
+[urgency=critical]
+background-color={color0}
+text-color={foreground}
+border-color={color1}
+default-timeout=0
+
+# Application specific rules (examples)
+[app-name=Spotify]
+border-color={color6}
+
+[app-name=Chromium]
+border-color={color4}
+
+# Do Not Disturb mode
+[mode=do-not-disturb]
+invisible=1

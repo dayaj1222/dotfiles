@@ -1,0 +1,142 @@
+{
+    "layer": "top",
+    "spacing": 0,
+    "height": 0,
+    "margin-top": 8,
+    "margin-right": 8,
+    "margin-bottom": 0,
+    "margin-left": 8,
+    "modules-left": [
+        "custom/launcher",
+        "sway/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "cpu",
+        "temperature",
+        "memory",
+        "battery",
+        "backlight",
+        "network",
+        "pulseaudio",
+        "custom/power"
+    ],
+    "custom/launcher": {
+        "format": "",
+        "on-click": "wofi --show drun",
+        "on-click-right": "killall rofi",
+        "tooltip": false
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
+        "format-icons": {
+            "default": " ",
+            "urgent": " ",
+            "focused": " "
+        }
+    },
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "   {:%I:%M %p - %a, %d %b %Y}",
+        "tooltip": false,
+},
+
+"temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "format": "  {temperatureC}°C",
+    "interval": 5,
+    "tooltip": false,
+    "on-click": "kitty --class btop -e btop"
+},
+    "cpu": {
+        "format": "   {usage}%",
+        "interval": 2,
+        "states": {
+            "critical": 90
+        },
+        "on-click": "kitty --class btop -e btop"
+    },
+    "memory": {
+        "format": "   {percentage}%",
+        "interval": 2,
+        "states": {
+            "critical": 80
+        },
+        "on-click": "kitty --class btop -e btop"
+    },
+    "battery": {
+        "format": "{icon}   {capacity}%",
+        "format-charging": "   {capacity}%",
+        "format-full": "   {capacity}%",
+        "interval": 5,
+        "states": {
+            "full": 100,
+            "high": 80,
+            "medium": 60,
+            "low": 40,
+            "warning": 20,
+            "critical": 10
+        },
+        "format-icons": [
+            "",  // 0–20%
+            "",  // 21–40%
+            "",  // 41–60%
+            "",  // 61–80%
+            ""   // 81–100%
+        ],
+        "tooltip": true,
+        "on-click": "~/bin/powerprofiles.sh"
+    },
+    "backlight": {
+        "format": "󰃟  {percent}%",
+        "interval": 2,
+        "on-scroll-up": "brightnessctl set +1%",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "tooltip": false
+    },
+    "network": {
+        "format-wifi": "   {bandwidthDownBits}",
+        "format-ethernet": "󰈂  {bandwidthDownBits}",
+        "format-disconnected": "󰖪  no network",
+        "interval": 5,
+        "on-click": "kitty --title nmtui-float --class nmtui-launcher -e nmtui",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "scroll-step": 5,
+        "max-volume": 150,
+        "format": "   {volume}%",
+        "format-bluetooth": " {volume}%",
+        "nospacing": 1,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/power": {
+        "format": "",
+        "on-click": "~/bin/power-menu.sh",
+        "on-click-right": "systemctl suspend",
+        "tooltip": "Power Off",
+        "interval": 0
+    }
+}
+

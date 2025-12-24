@@ -1,0 +1,8 @@
+# ~/.config/wofi/config
+
+width=20%
+height=40%
+show=drun
+allow_images=true
+insensitive=true
+hide_scroll=true
