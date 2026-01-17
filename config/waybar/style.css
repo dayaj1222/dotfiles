@@ -1,5 +1,4 @@
 @import url("/home/daya/.cache/wal/colors-waybar.css");
-
 * {
     border: none;
     min-height: 0;
@@ -8,24 +7,20 @@
     font-size: 14px;
     padding: 0;
 }
-
 window#waybar {
     background: @background;
     border: 2px solid @color5;
     border-radius: 1px;
 }
-
 tooltip {
     background-color: @background;
     border: 2px solid @color5;
     font-size: 2px;
 }
-
 tooltip label {
     margin: 8px;
     color: @foreground;
 }
-
 #clock,
 #tray,
 #cpu,
@@ -36,16 +31,15 @@ tooltip label {
 #temperature,
 #pulseaudio,
 #language,
-#custom-power {
+#custom-power,
+#custom-caffeine {
     margin: 6px 6px 6px 0px;
     padding: 2px 8px;
     border-radius: 4px;
 }
-
 #workspaces {
     border-radius: 4px;
 }
-
 #workspaces button {
     font-size: 20px;
     all: initial;
@@ -55,26 +49,22 @@ tooltip label {
     color: @foreground;
     margin-right: 2px;
 }
-
 #workspaces button.active {
     font-size: 20px;
     color: @background;
     background-color: @color5;
 }
-
 #workspaces button.urgent {
     font-size: 20px;
     background-color: @color1;
     color: @foreground;
     border: 2px solid @color1;
 }
-
 #clock {
     background-color: @color5;
     border: 2px solid @color5;
     color: @background;
 }
-
 #cpu,
 #memory,
 #network,
@@ -83,36 +73,32 @@ tooltip label {
 #temperature,
 #tray,
 #backlight,
-#language {
+#language,
+#custom-caffeine {
     background-color: @color0;
     border: 2px solid @color5;
     color: @foreground;
 }
-
 #network {
     min-width: 100px;
 }
-
 #cpu,
 #memory,
 #battery,
 #pulseaudio {
     min-width: 60px;
 }
-
 #cpu.critical,
 #memory.critical {
     color: @color1;
     border: 2px solid @color1;
 }
-
 #battery.warning,
 #battery.critical,
 #battery.urgent {
     color: @color1;
     border: 2px solid @color1;
 }
-
 #custom-launcher,
 #custom-power {
     font-size: 20px;
@@ -121,7 +107,12 @@ tooltip label {
     transition: none;
     color: @foreground;
 }
-
 #language {
     min-width: 20px;
+}
+#custom-caffeine.on {
+    color: #a6e3a1;
+}
+#custom-caffeine.off {
+    color: #585b70;
 }

@@ -14,6 +14,7 @@
         "clock"
     ],
     "modules-right": [
+        "custom/caffeine",
         "tray",
         "cpu",
         "temperature",
@@ -26,10 +27,12 @@
     ],
     "custom/launcher": {
         "format": "",
-        "on-click": "wofi --show drun",
+        "on-click": "wofi --show drun --prompt 'Applications' --xoffset 785 --yoffset 30 --width 350 --height 280 --hide-scroll --matching=fuzzy --insensitive --allow-markup --style ~/.config/wofi/style.css",
         "on-click-right": "killall rofi",
         "tooltip": false
     },
+
+
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -48,7 +51,7 @@
         },
         "format-icons": {
             "default": " ",
-            "urgent": " ",
+            "urgent": "🔴",
             "focused": " "
         }
     },
@@ -58,7 +61,7 @@
     },
     "clock": {
         "format": "   {:%I:%M %p - %a, %d %b %Y}",
-        "tooltip": false,
+        "tooltip": false
 },
 
 "temperature": {
@@ -137,6 +140,13 @@
         "on-click-right": "systemctl suspend",
         "tooltip": "Power Off",
         "interval": 0
+    },
+    "custom/caffeine": {
+    "exec": "~/bin/caffeine-toggle.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "~/bin/caffeine-toggle.sh toggle",
+    "format": "{}"
     }
 }
 

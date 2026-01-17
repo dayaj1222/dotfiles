@@ -8,7 +8,7 @@ action=$(echo -e "$options" | wofi \
     --dmenu \
     --prompt "Power Menu" \
     --width 300 \
-    --height 290 \
+    --height 305 \
     --xoffset 1585  \
     --yoffset 20 \
     --cache-file /dev/null \
@@ -17,7 +17,7 @@ action=$(echo -e "$options" | wofi \
     --insensitive \
     --allow-markup \
     --hide-search \
-    --style ~/.config/wofi/style.css 2>/dev/null)
+    --style ~/.config/wofi/style-menu.css 2>/dev/null)
 
 case $action in
     "󰐥  Shutdown")
@@ -53,9 +53,8 @@ case $action in
         --text-clear-color cdd6f4 \
         --layout-bg-color 1e1e2e \
         --layout-text-color cdd6f4 \
-        --layout-border-color 89b4fa
+        --layout-border-color 89b4fa;;
 
-        ;;
     "⏾  Hibernate")
         systemctl hibernate
         ;;

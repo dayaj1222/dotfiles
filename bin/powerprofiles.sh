@@ -23,7 +23,7 @@ action=$(echo -e "$options" | wofi \
     --dmenu \
     --prompt "Power Profile" \
     --width 300 \
-    --height 150 \
+    --height 162 \
     --xoffset 1370  \
     --yoffset 20 \
     --cache-file /dev/null \
@@ -32,7 +32,7 @@ action=$(echo -e "$options" | wofi \
     --insensitive \
     --allow-markup \
     --hide-search \
-    --style ~/.config/wofi/style.css 2>/dev/null)
+    --style ~/.config/wofi/style-menu.css 2>/dev/null)
 
 # Strip markup and checkmark
 action=$(echo "$action" | sed 's/<[^>]*>//g' | sed 's/󰍕 ^//')
