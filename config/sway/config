@@ -4,7 +4,6 @@
 # ║                        Elegant • Functional • Gorgeous                       ║
 # ╚══════════════════════════════════════════════════════════════════════════════╝
 # Start clipboard
-exec wl-paste --watch cliphist store
 xwayland enable
 #
 # ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -390,7 +389,7 @@ bindsym Print exec $HOME/bin/screenshot.sh
 # 📐 Partial screenshot
 bindsym $mod+Print exec $HOME/bin/partial-screenshot.sh
 # Clipboard
-bindsym $mod+v exec exec cliphist list | wofi -S dmenu --prompt "Clipboard" | cliphist decode | wl-copy 
+bindsym $mod+v exec cliphist list | wofi -S dmenu --prompt "Clipboard" | cliphist decode | wl-copy 
 bindsym $mod+Shift+v exec cliphist wipe
 # Emoji picker keybinds
 bindsym $mod+period exec $HOME/bin/emoji-picker.sh

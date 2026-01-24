@@ -23,7 +23,7 @@ apps=(
   slurp imagemagick grim ttf-jetbrains-mono-nerd
   brightnessctl pipewire pipewire-pulse wireplumber
   pavucontrol noto-fonts-emoji fish starship libnotify yazi
-  nodejs npm unzip lazygit fd swaybg swayidle swaylock-effects wl-clipboard 
+  nodejs npm unzip lazygit fd swaybg swayidle swaylock-effects wl-clipboard cliphist
 )
 
 # Packages to install with uv (edit as needed)
