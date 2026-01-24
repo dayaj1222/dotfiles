@@ -4,6 +4,7 @@
 # ║                        Elegant • Functional • Gorgeous                       ║
 # ╚══════════════════════════════════════════════════════════════════════════════╝
 # Start clipboard
+exec wl-paste --watch cliphist store
 xwayland enable
 #
 # ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -188,53 +189,41 @@ smart_borders off
 # ┌─────────────────────────────────────────────────────────────────────────────┐
 # │                          🔒 IDLE CONFIGURATION                              │
 # └─────────────────────────────────────────────────────────────────────────────┘
+
 exec swayidle -w \
-    timeout 120 'swaylock \
-      --color $color0 \
-      --inside-color $color0 \
-      --ring-color $color4 \
-      --line-color $color0 \
-      --text-color $foreground \
-      --key-hl-color $color5 \
-      --bs-hl-color $color1 \
-      --separator-color $color8 \
-      --inside-ver-color $color6 \
-      --ring-ver-color $color6 \
-      --text-ver-color $foreground \
-      --inside-wrong-color $color1 \
-      --ring-wrong-color $color1 \
-      --text-wrong-color $foreground \
-      --inside-clear-color $color0 \
-      --ring-clear-color $color4 \
-      --text-clear-color $foreground \
-      --layout-bg-color $color0 \
-      --layout-text-color $foreground \
-      --layout-border-color $color4 \
-      -f' \
-    timeout 60 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock \
-      --color $color0 \
-      --inside-color $color0 \
-      --ring-color $color4 \
-      --line-color $color0 \
-      --text-color $foreground \
-      --key-hl-color $color5 \
-      --bs-hl-color $color1 \
-      --separator-color $color8 \
-      --inside-ver-color $color6 \
-      --ring-ver-color $color6 \
-      --text-ver-color $foreground \
-      --inside-wrong-color $color1 \
-      --ring-wrong-color $color1 \
-      --text-wrong-color $foreground \
-      --inside-clear-color $color0 \
-      --ring-clear-color $color4 \
-      --text-clear-color $foreground \
-      --layout-bg-color $color0 \
-      --layout-text-color $foreground \
-      --layout-border-color $color4 \
-      -f'
+    timeout 120 'swaylock -f \
+        --screenshots \
+        --clock \
+        --indicator \
+        --indicator-radius 100 \
+        --indicator-thickness 7 \
+        --effect-blur 9x5 \
+        --effect-vignette 0.5:0.5 \
+        --ring-color 444444 \
+        --key-hl-color 777777 \
+        --line-color 00000000 \
+        --inside-color 000000aa \
+        --separator-color 00000000 \
+        --grace 2 \
+        --fade-in 0.2' \
+    timeout 180 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -f \
+        --screenshots \
+        --clock \
+        --indicator \
+        --indicator-radius 100 \
+        --indicator-thickness 7 \
+        --effect-blur 9x5 \
+        --effect-vignette 0.5:0.5 \
+        --ring-color 444444 \
+        --key-hl-color 777777 \
+        --line-color 00000000 \
+        --inside-color 000000aa \
+        --separator-color 00000000 \
+        --grace 2 \
+        --fade-in 0.2'
+
 # ╔══════════════════════════════════════════════════════════════════════════════╗
 # ║                              ⌨️ KEYBINDINGS                                  ║
 # ╚══════════════════════════════════════════════════════════════════════════════╝
@@ -389,7 +378,7 @@ bindsym Print exec $HOME/bin/screenshot.sh
 # 📐 Partial screenshot
 bindsym $mod+Print exec $HOME/bin/partial-screenshot.sh
 # Clipboard
-bindsym $mod+v exec cliphist list | wofi -S dmenu --prompt "Clipboard" | cliphist decode | wl-copy 
+bindsym $mod+v  exec cliphist list | wofi -S dmenu --prompt "Clipboard" | cliphist decode | wl-copy 
 bindsym $mod+Shift+v exec cliphist wipe
 # Emoji picker keybinds
 bindsym $mod+period exec $HOME/bin/emoji-picker.sh

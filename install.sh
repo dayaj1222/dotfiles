@@ -19,7 +19,7 @@ WALLPAPER_TARGET="$HOME/Pictures/wallpapers"
 apps=(
   btop firefox kitty mako nvim ripgrep
   sway swaylock-effects waybar wofi python uv
-  swappy
+  swappy xdg-desktop-portal xdg-desktop-portal-wlr 
   slurp imagemagick grim ttf-jetbrains-mono-nerd
   brightnessctl pipewire pipewire-pulse wireplumber
   pavucontrol noto-fonts-emoji fish starship libnotify yazi
