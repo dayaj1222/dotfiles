@@ -15,14 +15,20 @@ CONFIG_DIR="$HOME/.config"
 BIN_TARGET="$HOME/bin"
 WALLPAPER_TARGET="$HOME/Pictures/wallpapers"
 
-# Packages to install (edit as needed)
+# Packages to install with paru (edit as needed)
 apps=(
-  btop firefox cliphist imv kitty mako nvim ripgrep
-  sway swaylock-effects waybar wofi
-  slurp imagemagick grim tff-jetbrains-mono-nerd
+  btop firefox kitty mako nvim ripgrep
+  sway swaylock-effects waybar wofi python uv
+  swappy
+  slurp imagemagick grim ttf-jetbrains-mono-nerd
   brightnessctl pipewire pipewire-pulse wireplumber
-  pavucontrol noto-fonts-emoji
-  nodejs npm unzip lazygit fd swaybg swayidle swaylock-effects fish
+  pavucontrol noto-fonts-emoji fish starship libnotify yazi
+  nodejs npm unzip lazygit fd swaybg swayidle swaylock-effects wl-clipboard 
+)
+
+# Packages to install with uv (edit as needed)
+uv_apps=(
+  pywal16 pywalfox
 )
 
 # ----- Setup -----
@@ -63,12 +69,25 @@ link_safe() {
   echo "🔗 Linked: $tgt → $src"
 }
 
-# ----- Install packages -----
-if command -v yay &>/dev/null; then
-  echo "📦 Installing packages..."
-  yay -S --needed --noconfirm "${apps[@]}"
+# ----- Install packages with paru -----
+if command -v paru &>/dev/null; then
+  echo "📦 Installing packages with paru..."
+  paru -S --needed --noconfirm "${apps[@]}"
 else
-  echo "⚠️  yay not found (skipping package installation)"
+  echo "⚠️  paru not found (skipping package installation)"
+fi
+
+# ----- Install packages with uv -----
+if command -v uv &>/dev/null; then
+  echo ""
+  echo "📦 Installing packages with uv..."
+  for pkg in "${uv_apps[@]}"; do
+    echo "⬇️ Installing $pkg..."
+    uv tool install "$pkg" || echo "⚠️ Failed to install $pkg"
+  done
+else
+  echo ""
+  echo "⚠️  uv not found (skipping uv package installation)"
 fi
 
 # ----- Symlink all config directories automatically -----
@@ -106,3 +125,4 @@ if [[ -d "$backup_dir" ]]; then
   echo "📦 Backups saved to: $backup_dir"
   echo "   Remove after verification: rm -rf $backup_dir"
 fi
+

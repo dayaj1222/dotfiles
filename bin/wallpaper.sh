@@ -75,7 +75,7 @@ done
 SELECTED_PATH="$WALLPAPER_DIR/$SELECTED"
 
 # Apply wallpaper with wal using colorthief backend
-if wal -i "$SELECTED_PATH" -n --backend colorthief 2>/dev/null; then
+if wal -i "$SELECTED_PATH" -n --backend wal 2>/dev/null; then
     # Copy pywal colors to starship config if template exists
     if [ -f "$HOME/.cache/wal/starship.toml" ]; then
         cp "$HOME/.cache/wal/starship.toml" "$HOME/.config/starship.toml"
@@ -84,7 +84,7 @@ if wal -i "$SELECTED_PATH" -n --backend colorthief 2>/dev/null; then
     # Save selected index
     echo "$SELECTED_INDEX" > "$STATE_FILE"
     
-    notify-send "Wallpaper Changed" "Set to: $SELECTED" -i "$SELECTED_PATH"
+    notify-send -t 3000 "Wallpaper Changed" "Set to: $SELECTED" -i "$SELECTED_PATH"
 else
-    notify-send "Error" "Failed to set wallpaper" -u critical
+    notify-send -t 1000 "Error" "Failed to set wallpaper" -u critical
 fi

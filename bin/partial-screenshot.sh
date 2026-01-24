@@ -20,8 +20,6 @@ if ! command -v swappy >/dev/null 2>&1; then
     exit 1
 fi
 
-# Take area screenshot and open in swappy for editing, save to
-$SCREENSHOT_DIR
 if grim -g "$(slurp -d -b '#302d4180' -c '#96cdfb' -s '#57526840' -w 2)" - |
 swappy -f - -o "$filepath"; then
     notify-send "📸 swappy" "Screenshot edited and saved to $filepath"
