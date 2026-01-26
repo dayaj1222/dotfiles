@@ -17,7 +17,7 @@ WALLPAPER_TARGET="$HOME/Pictures/wallpapers"
 
 # Packages to install with paru (edit as needed)
 apps=(
-  btop firefox kitty mako nvim ripgrep
+  btop firefox kitty mako nvim ripgrep p7zip
   sway swaylock-effects waybar wofi python uv
   swappy xdg-desktop-portal xdg-desktop-portal-wlr 
   slurp imagemagick grim ttf-jetbrains-mono-nerd

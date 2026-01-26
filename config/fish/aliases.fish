@@ -38,3 +38,4 @@ alias j='jobs'
 # Downloading
 alias dl='aria2c --conf-path ~/.config/aria2/aria2.conf'
 alias dls='aria2c --conf-path ~/.config/aria2/aria2.conf --bt-sequential-unwanted-piece-priorities=true'
+

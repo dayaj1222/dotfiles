@@ -1,9 +1,10 @@
 # ~/.config/fish/config.fish
 
 # ENV variables
-set -Ux EDITOR nvim
-set -Ux VISUAL nvim
-set -Ux PATH $HOME/.cargo/bin $PATH
+set -x EDITOR nvim
+set -x VISUAL nvim
+set -x PATH $HOME/.cargo/bin $PATH
+set -x PATH $HOME/.npm/bin $PATH
 
 if status is-interactive
     set fish_greeting ""
@@ -25,6 +26,4 @@ end
 
 
 set -x STARSHIP_CONFIG ~/.cache/wal/starship.toml
-# Created by `pipx` on 2025-12-14 16:30:29
-set PATH $PATH /home/daya/.local/bin
 

@@ -83,6 +83,7 @@ if wal -i "$SELECTED_PATH" -n --backend wal 2>/dev/null; then
     
     # Save selected index
     echo "$SELECTED_INDEX" > "$STATE_FILE"
+
     
     notify-send -t 3000 "Wallpaper Changed" "Set to: $SELECTED" -i "$SELECTED_PATH"
 else
