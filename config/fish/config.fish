@@ -8,7 +8,6 @@ set -x PATH $HOME/.npm/bin $PATH
 
 if status is-interactive
     set fish_greeting ""
-    set --global fish_key_bindings fish_vi_key_bindings
     if test -f ~/.config/fish/aliases.fish
         source ~/.config/fish/aliases.fish
     end

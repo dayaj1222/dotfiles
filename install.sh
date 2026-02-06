@@ -9,7 +9,7 @@ set -euo pipefail
 DOTFILES_DIR="$HOME/dotfiles"
 DOTFILES_CONFIG="$DOTFILES_DIR/config"
 DOTFILES_BIN="$DOTFILES_DIR/bin"
-DOTFILES_WALLPAPER="$DOTFILES_DIR/wallpaper"
+DOTFILES_WALLPAPER="$DOTFILES_DIR/wallpapers"
 
 CONFIG_DIR="$HOME/.config"
 BIN_TARGET="$HOME/bin"
@@ -17,13 +17,14 @@ WALLPAPER_TARGET="$HOME/Pictures/wallpapers"
 
 # Packages to install with paru (edit as needed)
 apps=(
-  btop firefox kitty mako nvim ripgrep p7zip
-  sway swaylock-effects waybar wofi python uv
+  btop zen-browser-bin kitty mako nvim ripgrep p7zip
+  sway swaylock-effects waybar wofi python uv mpv yt-dlp
   swappy xdg-desktop-portal xdg-desktop-portal-wlr 
-  slurp imagemagick grim ttf-jetbrains-mono-nerd
+  slurp imagemagick grim ttf-jetbrains-mono-nerd power-profiles-daemon
   brightnessctl pipewire pipewire-pulse wireplumber
   pavucontrol noto-fonts-emoji fish starship libnotify yazi
   nodejs npm unzip lazygit fd swaybg swayidle swaylock-effects wl-clipboard cliphist
+  python-gobject
 )
 
 # Packages to install with uv (edit as needed)
