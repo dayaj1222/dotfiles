@@ -33,27 +33,21 @@ case $action in
         swaymsg exit
         ;;
     "󰌾  Lock Screen")
-        swaylock \
-        --color 1e1e2e \
-        --inside-color 1e1e2e \
-        --ring-color 89b4fa \
-        --line-color 1e1e2e \
-        --text-color cdd6f4 \
-        --key-hl-color cba6f7 \
-        --bs-hl-color f38ba8 \
-        --separator-color 313244 \
-        --inside-ver-color 94e2d5 \
-        --ring-ver-color 94e2d5 \
-        --text-ver-color cdd6f4 \
-        --inside-wrong-color f38ba8 \
-        --ring-wrong-color f38ba8 \
-        --text-wrong-color cdd6f4 \
-        --inside-clear-color 1e1e2e \
-        --ring-clear-color 89b4fa \
-        --text-clear-color cdd6f4 \
-        --layout-bg-color 1e1e2e \
-        --layout-text-color cdd6f4 \
-        --layout-border-color 89b4fa;;
+       swaylock -f \
+        --screenshots \
+        --clock \
+        --indicator \
+        --indicator-radius 100 \
+        --indicator-thickness 7 \
+        --effect-blur 15x7 \
+        --effect-vignette 0.5:0.5 \
+        --ring-color 444444 \
+        --key-hl-color 777777 \
+        --line-color 00000000 \
+        --inside-color 000000aa \
+        --separator-color 00000000 \
+        --grace 0 \
+        --fade-in 0;;
 
     "⏾  Hibernate")
         systemctl hibernate

@@ -21,6 +21,10 @@ if status is-interactive
         source ~/.config/fish/prompt.fish
     end
     source ~/.cache/wal/colors.fish
+
+    if not set -q TMUX
+        exec tmux 
+    end
 end
 
 
