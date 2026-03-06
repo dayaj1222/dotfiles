@@ -27,7 +27,7 @@
     ],
     "custom/launcher": {
         "format": "",
-        "on-click": "wofi --show drun --prompt 'Applications' --xoffset 785 --yoffset 30 --width 350 --height 280 --hide-scroll --matching=fuzzy --insensitive --allow-markup --style ~/.config/wofi/style.css",
+        "on-click": "fuzzel",
         "on-click-right": "killall rofi",
         "tooltip": false
     },
@@ -60,7 +60,7 @@
 },
 
 "temperature": {
-    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
     "format": "  {temperatureC}°C",
     "interval": 5,
     "tooltip": false,
@@ -103,7 +103,7 @@
             ""   // 81–100%
         ],
         "tooltip": true,
-        "on-click": "~/bin/powerprofiles.sh"
+        "on-click": "$HOME/dotfiles/scripts/powerprofiles.sh --menu"
     },
     "backlight": {
         "format": "󰃟  {percent}%",
@@ -131,16 +131,16 @@
     },
     "custom/power": {
         "format": "",
-        "on-click": "~/bin/power-menu.sh",
+        "on-click": "$HOME/dotfiles/scripts/power-menu.sh",
         "on-click-right": "systemctl suspend",
         "tooltip": "Power Off",
         "interval": 0
     },
     "custom/caffeine": {
-    "exec": "~/bin/caffeine-toggle.sh",
+    "exec": "$HOME/dotfiles/scripts/caffeine-toggle.sh",
     "return-type": "json",
     "interval": 2,
-    "on-click": "~/bin/caffeine-toggle.sh toggle",
+    "on-click": "$HOME/dotfiles/scripts/caffeine-toggle.sh toggle",
     "format": "{}"
     }
 }

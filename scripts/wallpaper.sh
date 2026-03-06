@@ -1,6 +1,6 @@
 #!/bin/bash
 # Wofi Wallpaper Selector with Pywal Integration
-# Select and apply wallpapers using wofi, randomly, or test all wallpapers
+# Select and apply wallpapers using fuzzel, randomly, or test all wallpapers
 
 WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 STATE_FILE="$HOME/.config/sway/current_wallpaper_index"
@@ -11,14 +11,22 @@ apply_wallpaper() {
     local wallpaper_path="$1"
     local wallpaper_name="$2"
     local selected_index="$3"
-    
+
     # Apply wallpaper with wal using wal backend
     if uvx --from pywal16 wal -i "$wallpaper_path" -n --backend wal 2>/dev/null; then
+        # Apply wallpaper
+        swaybg -i "$wallpaper_path" &
+
         # Copy pywal colors to starship config if template exists
         if [ -f "$HOME/.cache/wal/starship.toml" ]; then
             cp "$HOME/.cache/wal/starship.toml" "$HOME/.config/starship.toml"
         fi
-        
+
+        # Copy pywal colors to fuzzel config
+        if [ -f "$HOME/.cache/wal/fuzzel.ini" ]; then
+            cp "$HOME/.cache/wal/fuzzel.ini" "$HOME/.config/fuzzel/fuzzel.ini"
+        fi
+
         # Save selected index
         echo "$selected_index" > "$STATE_FILE"
         notify-send -t 3000 "Wallpaper Changed" "Set to: $wallpaper_name" -i "$wallpaper_path"
@@ -33,28 +41,28 @@ apply_wallpaper() {
 test_wallpapers() {
     local FAILED_WALLPAPERS=()
     local SUCCESSFUL_WALLPAPERS=()
-    
+
     # Create log file directory if it doesn't exist
     mkdir -p "$(dirname "$LOG_FILE")"
-    
+
     # Clear previous log
     echo "Wallpaper Cleanup - $(date)" > "$LOG_FILE"
     echo "================================" >> "$LOG_FILE"
-    
+
     echo "Found ${#WALLPAPERS[@]} wallpapers to test" | tee -a "$LOG_FILE"
     echo "" >> "$LOG_FILE"
-    
+
     # Show initial notification
     notify-send "Wallpaper Cleanup" "Testing ${#WALLPAPERS[@]} wallpapers..." -t 3000
-    
+
     # Test each wallpaper
     local CURRENT=0
     for wallpaper in "${WALLPAPERS[@]}"; do
         CURRENT=$((CURRENT + 1))
         local WALLPAPER_PATH="$WALLPAPER_DIR/$wallpaper"
-        
+
         echo "[$CURRENT/${#WALLPAPERS[@]}] Testing: $wallpaper" | tee -a "$LOG_FILE"
-        
+
         # Test with wal in dry-run mode (--preview flag) to avoid applying
         # This only generates the palette without applying it to the system
         if uvx --from pywal16 wal -i "$WALLPAPER_PATH" --preview --backend wal &>> "$LOG_FILE"; then
@@ -63,15 +71,15 @@ test_wallpapers() {
         else
             echo "  ✗ FAILED - Will be deleted" | tee -a "$LOG_FILE"
             FAILED_WALLPAPERS+=("$wallpaper")
-            
+
             # Delete the failed wallpaper
             rm "$WALLPAPER_PATH"
             echo "  Deleted: $WALLPAPER_PATH" | tee -a "$LOG_FILE"
         fi
-        
+
         echo "" >> "$LOG_FILE"
     done
-    
+
     # Summary
     echo "================================" | tee -a "$LOG_FILE"
     echo "SUMMARY:" | tee -a "$LOG_FILE"
@@ -79,24 +87,24 @@ test_wallpapers() {
     echo "Successful: ${#SUCCESSFUL_WALLPAPERS[@]}" | tee -a "$LOG_FILE"
     echo "Failed (deleted): ${#FAILED_WALLPAPERS[@]}" | tee -a "$LOG_FILE"
     echo "" >> "$LOG_FILE"
-    
+
     if [ ${#FAILED_WALLPAPERS[@]} -gt 0 ]; then
         echo "Deleted wallpapers:" | tee -a "$LOG_FILE"
         for wallpaper in "${FAILED_WALLPAPERS[@]}"; do
             echo "  - $wallpaper" | tee -a "$LOG_FILE"
         done
     fi
-    
+
     # Final notification
     if [ ${#FAILED_WALLPAPERS[@]} -gt 0 ]; then
         notify-send "Cleanup Complete" "Removed ${#FAILED_WALLPAPERS[@]} incompatible wallpapers\nKept ${#SUCCESSFUL_WALLPAPERS[@]} working wallpapers" -t 5000
     else
         notify-send "Cleanup Complete" "All ${#SUCCESSFUL_WALLPAPERS[@]} wallpapers are compatible!" -t 5000
     fi
-    
+
     echo "" | tee -a "$LOG_FILE"
     echo "Log saved to: $LOG_FILE" | tee -a "$LOG_FILE"
-    
+
     exit 0
 }
 
@@ -143,7 +151,7 @@ if [ "$1" = "-r" ] || [ "$1" = "--random" ]; then
     RANDOM_INDEX=$((RANDOM % ${#WALLPAPERS[@]}))
     SELECTED="${WALLPAPERS[$RANDOM_INDEX]}"
     SELECTED_PATH="$WALLPAPER_DIR/$SELECTED"
-    
+
     apply_wallpaper "$SELECTED_PATH" "$SELECTED" "$RANDOM_INDEX"
     exit $?
 fi
@@ -159,14 +167,9 @@ if [ -f "$STATE_FILE" ]; then
     fi
 fi
 
-# Create wofi menu with current wallpaper highlighted
+# Show wallpaper picker
 SELECTED=$(printf '%s\n' "${WALLPAPERS[@]}" | \
-    wofi --dmenu \
-    --prompt "Select Wallpaper" \
-    --width 600 \
-    --height 400 \
-    --insensitive \
-    --cache-file=/dev/null)
+    fuzzel --dmenu --prompt "Wallpaper  " --lines 12 --width 50)
 
 # Exit if no selection
 if [ -z "$SELECTED" ]; then

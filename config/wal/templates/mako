@@ -8,7 +8,7 @@ background-color={background}
 text-color={foreground}
 border-color={color5}
 border-size=2
-border-radius=2
+border-radius=0
 padding=10
 margin=8
 
@@ -50,7 +50,7 @@ default-timeout=0
 [app-name=Spotify]
 border-color={color6}
 
-[app-name=Chromium]
+[app-name=zen-browser]
 border-color={color4}
 
 # Do Not Disturb mode

@@ -7,7 +7,19 @@
 
 # Start clipboard
 exec wl-paste --watch cliphist store
+
+# Wallpaper restored at sway startup via swaybg
+exec_always swaybg -i "$(cat ~/.cache/wal/wal 2>/dev/null || echo)" &
 xwayland enable
+
+# Environment variables
+set $gnome-schema org.gnome.desktop.interface
+exec_always gsettings set $gnome-schema gtk-theme 'catppuccin-mocha-blue-standard+default'
+exec_always gsettings set $gnome-schema icon-theme 'Papirus-Dark'
+exec_always gsettings set $gnome-schema color-scheme 'prefer-dark'
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway GTK_USE_PORTAL=1
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -62,38 +74,7 @@ client.urgent           $color1     $color1     $foreground $color9     $color9
 # ──────────────────────────────────────────────────────────────────────────────
 
 # Chat Applications
-for_window [app_id="libera"] {
-    floating enable
-    resize set height 500 px
-    resize set width 900 px
-    move position 1000 5
-    border pixel 3
-}
 
-for_window [app_id="tilde"] {
-    floating enable
-    resize set height 500 px
-    resize set width 900 px
-    move position 950 325
-    border pixel 3
-}
-
-for_window [class="Signal Beta"] {
-    floating enable
-    resize set height 980 px
-    resize set width 800 px
-    move position 30 25
-    border pixel 3
-}
-
-# Media Applications
-for_window [app_id="cava"] {
-    floating enable
-    resize set height 525 px
-    resize set width 750 px
-    move position 1135 490
-    border pixel 3
-}
 
 for_window [class="Spotify"] {
     floating enable
@@ -115,8 +96,15 @@ for_window [app_id="vlc"] {
     border pixel 2
 }
 
+for_window [app_id="satty"] {
+    floating enable
+    resize set 1200 800
+    move position center
+    border pixel 2
+}
+
 # Image Viewer
-for_window [app_id="imv"] {
+for_window [app_id="swayimg"] {
     floating enable
     resize set 1000 700
     move position center
@@ -143,6 +131,14 @@ for_window [app_id="pavucontrol"] {
     border pixel 2
 }
 
+# Generic floating kitty — any kitty launched with --class floating
+for_window [app_id="floating"] {
+    floating enable
+    resize set 900 600
+    move position center
+    border pixel 2
+}
+
 for_window [app_id="btop"] {
     floating enable
     resize set 1000 700
@@ -156,12 +152,6 @@ for_window [app_id="copilot-kitty"] {
     move position 1402 px 2 px
 }
 
-for_window [app_id="chromium" title="Open File"] {
-    floating enable
-    resize set 1000 700
-    move position center
-    border pixel 2
-}
 
 # Network Manager
 assign [title="nmtui"] workspace number 99
@@ -173,15 +163,17 @@ for_window [title="nmtui"] {
 }
 
 # Games
-for_window [title="brick_break"] floating enable
+for_window [app_id="chess"] {
+    floating enable
+    move position center
+}
 
 
 # ──────────────────────────────────────────────────────────────────────────────
 #  Display Configuration
 # ──────────────────────────────────────────────────────────────────────────────
 
-# Wallpaper (using pywal variable)
-output * bg $wallpaper fill
+# Wallpaper handled by swaybg (see exec_always at top)
 
 # Monitor Setup
 output eDP-1 {
@@ -242,15 +234,15 @@ exec swayidle -w \
         --indicator \
         --indicator-radius 100 \
         --indicator-thickness 7 \
-        --effect-blur 9x5 \
+        --effect-blur 15x7 \
         --effect-vignette 0.5:0.5 \
         --ring-color 444444 \
         --key-hl-color 777777 \
         --line-color 00000000 \
         --inside-color 000000aa \
         --separator-color 00000000 \
-        --grace 2 \
-        --fade-in 0.2' \
+        --grace 0 \
+        --fade-in 0' \
     timeout 180 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f \
@@ -259,15 +251,15 @@ exec swayidle -w \
         --indicator \
         --indicator-radius 100 \
         --indicator-thickness 7 \
-        --effect-blur 9x5 \
+        --effect-blur 15x7 \
         --effect-vignette 0.5:0.5 \
         --ring-color 444444 \
         --key-hl-color 777777 \
         --line-color 00000000 \
         --inside-color 000000aa \
         --separator-color 00000000 \
-        --grace 2 \
-        --fade-in 0.2'
+        --grace 0 \
+        --fade-in 0'
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -290,6 +282,7 @@ set $editor kitty --class neovim -e nvim
 # ──────────────────────────────────────────────────────────────────────────────
 
 bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec kitty --class floating
 bindsym $mod+b exec $browser
 bindsym $mod+e exec $editor
 bindsym $mod+n exec $file-manager
@@ -297,17 +290,7 @@ bindsym $mod+q kill
 bindsym $mod+Shift+m exec $system-monitor
 
 # Application launcher
-bindsym $mod+space exec wofi --show drun \
-    --prompt "Applications" \
-    --xoffset 785 \
-    --yoffset 30 \
-    --width 350 \
-    --height 280 \
-    --hide-scroll \
-    --matching=fuzzy \
-    --insensitive \
-    --allow-markup \
-    --style ~/.config/wofi/style.css
+bindsym $mod+space exec fuzzel
 
 # Notifications
 bindsym Control+space exec makoctl dismiss
@@ -320,9 +303,9 @@ bindsym $mod+Shift+r exec swaymsg exit
 floating_modifier $mod normal
 
 # Utilities
-bindsym $mod+Shift+e exec $HOME/bin/power-menu.sh
-bindsym $mod+c exec $HOME/bin/ai.sh
-bindsym $mod+alt+w exec $HOME/bin/waybar-toggle.sh
+bindsym $mod+Shift+e exec $HOME/dotfiles/scripts/power-menu.sh
+bindsym $mod+c exec kitty --class copilot-kitty -e copilot
+bindsym $mod+alt+w exec $HOME/dotfiles/scripts/waybar-toggle.sh
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -421,8 +404,8 @@ bindsym $mod+alt+$right resize grow width 20px
 # ──────────────────────────────────────────────────────────────────────────────
 
 # Audio controls
-bindsym --locked XF86AudioRaiseVolume exec $HOME/bin/volume-up.sh
-bindsym --locked XF86AudioLowerVolume exec $HOME/bin/volume-down.sh
+bindsym --locked XF86AudioRaiseVolume exec $HOME/dotfiles/scripts/volume-up.sh
+bindsym --locked XF86AudioLowerVolume exec $HOME/dotfiles/scripts/volume-down.sh
 bindsym --locked XF86AudioMute exec pactl set-sink-mute $(pactl list | rg 'Sink #' | sed 's/Sink #//') toggle
 
 # Brightness controls
@@ -446,25 +429,25 @@ bindsym --locked $mod+Shift+d exec sh -c \
 # ──────────────────────────────────────────────────────────────────────────────
 
 # Screenshots
-bindsym Print exec $HOME/bin/screenshot.sh
-bindsym $mod+Print exec $HOME/bin/partial-screenshot.sh
+bindsym Print exec $HOME/dotfiles/scripts/screenshot.sh
+bindsym $mod+Print exec $HOME/dotfiles/scripts/screenshot.sh -f
 
 # Clipboard
-bindsym $mod+v exec cliphist list | wofi -S dmenu --prompt "Clipboard" | cliphist decode | wl-copy
+bindsym $mod+v exec cliphist list | fuzzel --dmenu --prompt "Clipboard" | cliphist decode | wl-copy
 bindsym $mod+Shift+v exec cliphist wipe
 
 # Emoji picker
-bindsym $mod+period exec $HOME/bin/emoji-picker.sh
+bindsym $mod+period exec $HOME/dotfiles/scripts/emoji-picker.sh
 
 # Wallpaper switch
-bindsym $mod+w exec $HOME/bin/wallpaper.sh
-bindsym $mod+Shift+w exec $HOME/bin/wallpaper.sh -r
+bindsym $mod+w exec $HOME/dotfiles/scripts/wallpaper.sh
+bindsym $mod+Shift+w exec $HOME/dotfiles/scripts/wallpaper.sh -r
 
 # Color picker
-bindsym $mod+p exec $HOME/bin/colorpicker.sh
+bindsym $mod+p exec $HOME/dotfiles/scripts/colorpicker.sh
 
 # Caffeine mode
-bindsym $mod+Shift+c exec ~/bin/caffeine-toggle.sh toggle
+bindsym $mod+Shift+c exec $HOME/dotfiles/scripts/caffeine-toggle.sh toggle
 
 
 # ──────────────────────────────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 #!/bin/bash
-# Emoji Picker for Sway with wofi
-EMOJI_FILE="$HOME/dotfiles/bin/emojis.txt"
+# Emoji Picker
+EMOJI_FILE="$HOME/dotfiles/config/fuzzel/emojis.txt"
 RECENT_FILE="$HOME/.cache/recent-emojis.txt"
 
 # Add emoji to recent list
@@ -26,8 +26,8 @@ main() {
         list=$(cat "$EMOJI_FILE")
     fi
     
-    # Show in wofi
-    selection=$(echo "$list" | wofi --dmenu -i -p "Emoji")
+    # Show picker
+    selection=$(echo "$list" | fuzzel --dmenu --prompt "Emoji  ")
     
     # Skip separator
     if [ "$selection" = "---" ] || [ -z "$selection" ]; then
