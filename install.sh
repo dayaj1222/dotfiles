@@ -6,7 +6,7 @@
 set -euo pipefail
 
 # ----- Configuration -----
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR="$HOME/.dotfiles"
 DOTFILES_CONFIG="$DOTFILES_DIR/config"
 DOTFILES_SCRIPTS="$DOTFILES_DIR/scripts"
 DOTFILES_WALLPAPER="$DOTFILES_DIR/wallpapers"
@@ -32,7 +32,7 @@ uv_apps=(
 
 # ----- Setup -----
 timestamp=$(date +"%Y%m%d_%H%M%S")
-backup_dir="$HOME/dotfiles_backup_$timestamp"
+backup_dir="$HOME/.dotfiles_backup_$timestamp"
 
 # Create symlink with backup of existing target
 link_safe() {

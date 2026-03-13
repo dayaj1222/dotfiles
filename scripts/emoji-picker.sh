@@ -1,6 +1,6 @@
 #!/bin/bash
 # Emoji Picker
-EMOJI_FILE="$HOME/dotfiles/config/fuzzel/emojis.txt"
+EMOJI_FILE="$HOME/.config/fuzzel/emojis.txt"
 RECENT_FILE="$HOME/.cache/recent-emojis.txt"
 
 # Add emoji to recent list

@@ -303,9 +303,9 @@ bindsym $mod+Shift+r exec swaymsg exit
 floating_modifier $mod normal
 
 # Utilities
-bindsym $mod+Shift+e exec $HOME/dotfiles/scripts/power-menu.sh
+bindsym $mod+Shift+e exec $HOME/.dotfiles/scripts/power-menu.sh
 bindsym $mod+c exec kitty --class copilot-kitty -e copilot
-bindsym $mod+alt+w exec $HOME/dotfiles/scripts/waybar-toggle.sh
+bindsym $mod+alt+w exec $HOME/.dotfiles/scripts/waybar-toggle.sh
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -404,8 +404,8 @@ bindsym $mod+alt+$right resize grow width 20px
 # ──────────────────────────────────────────────────────────────────────────────
 
 # Audio controls
-bindsym --locked XF86AudioRaiseVolume exec $HOME/dotfiles/scripts/volume-up.sh
-bindsym --locked XF86AudioLowerVolume exec $HOME/dotfiles/scripts/volume-down.sh
+bindsym --locked XF86AudioRaiseVolume exec $HOME/.dotfiles/scripts/volume-up.sh
+bindsym --locked XF86AudioLowerVolume exec $HOME/.dotfiles/scripts/volume-down.sh
 bindsym --locked XF86AudioMute exec pactl set-sink-mute $(pactl list | rg 'Sink #' | sed 's/Sink #//') toggle
 
 # Brightness controls
@@ -429,25 +429,25 @@ bindsym --locked $mod+Shift+d exec sh -c \
 # ──────────────────────────────────────────────────────────────────────────────
 
 # Screenshots
-bindsym Print exec $HOME/dotfiles/scripts/screenshot.sh
-bindsym $mod+Print exec $HOME/dotfiles/scripts/screenshot.sh -f
+bindsym Print exec $HOME/.dotfiles/scripts/screenshot.sh
+bindsym $mod+Print exec $HOME/.dotfiles/scripts/screenshot.sh -f
 
 # Clipboard
 bindsym $mod+v exec cliphist list | fuzzel --dmenu --prompt "Clipboard: " | cliphist decode | wl-copy
 bindsym $mod+Shift+v exec cliphist wipe
 
 # Emoji picker
-bindsym $mod+period exec $HOME/dotfiles/scripts/emoji-picker.sh
+bindsym $mod+period exec $HOME/.dotfiles/scripts/emoji-picker.sh
 
 # Wallpaper switch
-bindsym $mod+w exec $HOME/dotfiles/scripts/wallpaper.sh
-bindsym $mod+Shift+w exec $HOME/dotfiles/scripts/wallpaper.sh -r
+bindsym $mod+w exec $HOME/.dotfiles/scripts/wallpaper.sh
+bindsym $mod+Shift+w exec $HOME/.dotfiles/scripts/wallpaper.sh -r
 
 # Color picker
-bindsym $mod+p exec $HOME/dotfiles/scripts/colorpicker.sh
+bindsym $mod+p exec $HOME/.dotfiles/scripts/colorpicker.sh
 
 # Caffeine mode
-bindsym $mod+Shift+c exec $HOME/dotfiles/scripts/caffeine-toggle.sh toggle
+bindsym $mod+Shift+c exec $HOME/.dotfiles/scripts/caffeine-toggle.sh toggle
 
 
 # ──────────────────────────────────────────────────────────────────────────────

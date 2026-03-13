@@ -103,7 +103,7 @@
             ""   // 81–100%
         ],
         "tooltip": true,
-        "on-click": "$HOME/dotfiles/scripts/powerprofiles.sh --menu"
+        "on-click": "$HOME/.dotfiles/scripts/powerprofiles.sh --menu"
     },
     "backlight": {
         "format": "󰃟  {percent}%",
@@ -131,16 +131,16 @@
     },
     "custom/power": {
         "format": "",
-        "on-click": "$HOME/dotfiles/scripts/power-menu.sh",
+        "on-click": "$HOME/.dotfiles/scripts/power-menu.sh",
         "on-click-right": "systemctl suspend",
         "tooltip": "Power Off",
         "interval": 0
     },
     "custom/caffeine": {
-    "exec": "$HOME/dotfiles/scripts/caffeine-toggle.sh",
+    "exec": "$HOME/.dotfiles/scripts/caffeine-toggle.sh",
     "return-type": "json",
     "interval": 2,
-    "on-click": "$HOME/dotfiles/scripts/caffeine-toggle.sh toggle",
+    "on-click": "$HOME/.dotfiles/scripts/caffeine-toggle.sh toggle",
     "format": "{}"
     }
 }

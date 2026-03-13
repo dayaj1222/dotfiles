@@ -2,9 +2,16 @@
 # Wofi Wallpaper Selector with Pywal Integration
 # Select and apply wallpapers using fuzzel, randomly, or test all wallpapers
 
+PATH="$HOME/.local/bin:$PATH"
+
 WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 STATE_FILE="$HOME/.config/sway/current_wallpaper_index"
 LOG_FILE="$HOME/.cache/wallpaper_cleanup.log"
+
+if ! command -v wal >/dev/null 2>&1; then
+    notify-send "Error" "wal command not found in PATH" -u critical
+    exit 1
+fi
 
 # Function to apply wallpaper
 apply_wallpaper() {
@@ -13,7 +20,7 @@ apply_wallpaper() {
     local selected_index="$3"
 
     # Apply wallpaper with wal using wal backend
-    if uvx --from pywal16 wal -i "$wallpaper_path" -n --backend wal 2>/dev/null; then
+    if wal -i "$wallpaper_path" -n --backend wal 2>/dev/null; then
         # Kill previous swaybg instances and apply new wallpaper
         pkill swaybg 2>/dev/null; sleep 0.1
         swaybg -i "$wallpaper_path" &
@@ -66,7 +73,7 @@ test_wallpapers() {
 
         # Test with wal in dry-run mode (--preview flag) to avoid applying
         # This only generates the palette without applying it to the system
-        if uvx --from pywal16 wal -i "$WALLPAPER_PATH" -n --backend wal &>> "$LOG_FILE"; then
+        if wal -i "$WALLPAPER_PATH" -n --backend wal &>> "$LOG_FILE"; then
             echo "  ✓ SUCCESS" | tee -a "$LOG_FILE"
             SUCCESSFUL_WALLPAPERS+=("$wallpaper")
         else
