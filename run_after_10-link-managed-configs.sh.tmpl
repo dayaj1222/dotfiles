@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SOURCE_DIR="{{ .chezmoi.sourceDir }}"
+CONFIG_DIR="$HOME/.config"
+BACKUP_ROOT="$HOME/.cache/chezmoi-symlink-backups"
+
+APPS=(
+  btop cliphist fish fuzzel gtk-3.0 gtk-4.0 kitty mako
+  nvim ripgrep sway tmux wal waybar wofi yazi
+)
+
+for app in "${APPS[@]}"; do
+  src="$SOURCE_DIR/dot_config/$app"
+  dst="$CONFIG_DIR/$app"
+
+  [[ -e "$src" ]] || continue
+
+  if [[ -L "$dst" ]] && [[ "$(readlink -f "$dst")" == "$src" ]]; then
+    continue
+  fi
+
+  if [[ -e "$dst" || -L "$dst" ]]; then
+    ts="$(date +%Y%m%d_%H%M%S)"
+    backup_dir="$BACKUP_ROOT/$ts"
+    mkdir -p "$backup_dir"
+    mv "$dst" "$backup_dir/$app"
+  fi
+
+  ln -s "$src" "$dst"
+done
