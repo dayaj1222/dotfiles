@@ -139,7 +139,7 @@ for_window [app_id="floating"] {
     border pixel 2
 }
 
-for_window [app_id="btop"] {
+for_window [app_id="floating"] {
     floating enable
     resize set 1000 700
     move position center
@@ -272,7 +272,7 @@ exec swayidle -w \
 
 set $term kitty
 set $browser zen-browser
-set $file-manager kitty -e yazi
+set $file-manager kitty --class floating -e yazi
 set $system-monitor kitty --class btop -e btop
 set $editor kitty --class neovim -e nvim
 
@@ -433,7 +433,7 @@ bindsym Print exec $HOME/dotfiles/scripts/screenshot.sh
 bindsym $mod+Print exec $HOME/dotfiles/scripts/screenshot.sh -f
 
 # Clipboard
-bindsym $mod+v exec cliphist list | fuzzel --dmenu --prompt "Clipboard" | cliphist decode | wl-copy
+bindsym $mod+v exec cliphist list | fuzzel --dmenu --prompt "Clipboard: " | cliphist decode | wl-copy
 bindsym $mod+Shift+v exec cliphist wipe
 
 # Emoji picker

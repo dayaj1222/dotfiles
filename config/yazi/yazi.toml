@@ -1,0 +1,20 @@
+[opener]
+
+image = [
+    { run = 'swayimg "$@"', orphan = true, desc = "Images with swayimg" }
+]
+
+video = [
+    { run = 'mpv "$@"', orphan = true, desc = "Video with mpv" }
+]
+
+browser = [
+    { run = 'xdg-open "$@"', orphan = true, desc = "Open in browser" }
+]
+
+[open]
+rules = [
+    { mime = "image/*", use = "image" },
+    { mime = "video/*", use = "video" },
+    { mime = "application/pdf", use = "browser" }
+]

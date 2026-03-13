@@ -21,9 +21,8 @@ apps=(
   satty xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk
   slurp imagemagick grim ttf-jetbrains-mono-nerd power-profiles-daemon
   brightnessctl pipewire pipewire-pulse wireplumber
-  pavucontrol noto-fonts-emoji fish starship libnotify yazi
-  nodejs npm unzip lazygit fd swaybg swayimg swayidle swaylock-effects wl-clipboard cliphist tree-sitter-cli
-  python-gobject catppuccin-gtk-theme-mocha papirus-icon-theme
+  pavucontrol noto-fonts noto-fonts-emoji fish starship libnotify yazi
+unzip lazygit fd fzf swaybg swayimg swayidle swaylock-effects wl-clipboard cliphist python-gobject catppuccin-gtk-theme-mocha papirus-icon-theme
 )
 
 # Packages to install with uv (edit as needed)

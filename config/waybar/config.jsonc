@@ -64,7 +64,7 @@
     "format": "  {temperatureC}°C",
     "interval": 5,
     "tooltip": false,
-    "on-click": "kitty --class btop -e btop"
+    "on-click": "kitty --class floating -e btop"
 },
     "cpu": {
         "format": "   {usage}%",
@@ -72,7 +72,7 @@
         "states": {
             "critical": 90
         },
-        "on-click": "kitty --class btop -e btop"
+        "on-click": "kitty --class floating -e btop"
     },
     "memory": {
         "format": "   {percentage}%",
@@ -80,7 +80,7 @@
         "states": {
             "critical": 80
         },
-        "on-click": "kitty --class btop -e btop"
+        "on-click": "kitty --class floating -e btop"
     },
     "battery": {
         "format": "{icon}   {capacity}%",

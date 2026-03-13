@@ -14,7 +14,8 @@ apply_wallpaper() {
 
     # Apply wallpaper with wal using wal backend
     if uvx --from pywal16 wal -i "$wallpaper_path" -n --backend wal 2>/dev/null; then
-        # Apply wallpaper
+        # Kill previous swaybg instances and apply new wallpaper
+        pkill swaybg 2>/dev/null; sleep 0.1
         swaybg -i "$wallpaper_path" &
 
         # Copy pywal colors to starship config if template exists
@@ -65,7 +66,7 @@ test_wallpapers() {
 
         # Test with wal in dry-run mode (--preview flag) to avoid applying
         # This only generates the palette without applying it to the system
-        if uvx --from pywal16 wal -i "$WALLPAPER_PATH" --preview --backend wal &>> "$LOG_FILE"; then
+        if uvx --from pywal16 wal -i "$WALLPAPER_PATH" -n --backend wal &>> "$LOG_FILE"; then
             echo "  ✓ SUCCESS" | tee -a "$LOG_FILE"
             SUCCESSFUL_WALLPAPERS+=("$wallpaper")
         else
@@ -169,7 +170,7 @@ fi
 
 # Show wallpaper picker
 SELECTED=$(printf '%s\n' "${WALLPAPERS[@]}" | \
-    fuzzel --dmenu --prompt "Wallpaper  " --lines 12 --width 50)
+    fuzzel --dmenu --prompt "Wallpaper: " --lines 12 --width 50)
 
 # Exit if no selection
 if [ -z "$SELECTED" ]; then

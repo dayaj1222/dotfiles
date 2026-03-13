@@ -27,7 +27,7 @@ main() {
     fi
     
     # Show picker
-    selection=$(echo "$list" | fuzzel --dmenu --prompt "Emoji  ")
+    selection=$(echo "$list" | fuzzel --dmenu --prompt "Emoji: ")
     
     # Skip separator
     if [ "$selection" = "---" ] || [ -z "$selection" ]; then
