@@ -1,0 +1,8 @@
+0000000000000000000000000000000000000000 f5a1fa13c5a2904daea1cd06a44f0a79230dedbb daya <dayajoshi1222@gmail.com> 1769444220 +0545	clone: from github.com:dayaj1222/nvim.git
+f5a1fa13c5a2904daea1cd06a44f0a79230dedbb 5ba66e2a49a3d5e9842070acf3dd18a34858f9c3 daya <dayajoshi1222@gmail.com> 1769444372 +0545	commit: add tmux
+5ba66e2a49a3d5e9842070acf3dd18a34858f9c3 1f02d0795242b4b02491859a8d01fac63158d627 daya <dayajoshi1222@gmail.com> 1770402848 +0545	commit: Minor improvements
+1f02d0795242b4b02491859a8d01fac63158d627 1f02d0795242b4b02491859a8d01fac63158d627 daya <dayajoshi1222@gmail.com> 1770525435 +0545	reset: moving to HEAD
+1f02d0795242b4b02491859a8d01fac63158d627 47f9f943a7105e9b7957fffdca48715f45a5d8c6 daya <dayajoshi1222@gmail.com> 1770525446 +0545	commit: removed conflicting keybinds
+47f9f943a7105e9b7957fffdca48715f45a5d8c6 69babb23c29b0ade17550db3f005c0d8d54c2298 daya <dayajoshi1222@gmail.com> 1772084043 +0530	commit: feat: add support for go
+69babb23c29b0ade17550db3f005c0d8d54c2298 a3ec39b6bfcfe88de1abf5a2f760fa65c7042bed daya <dayajoshi1222@gmail.com> 1772807078 +0530	commit: change treesitter config to match latest version
+a3ec39b6bfcfe88de1abf5a2f760fa65c7042bed c7c99e6d10497f6fc90466b578211fa6a4fd66e2 daya <dayajoshi1222@gmail.com> 1773420405 +0530	commit: add golsp
