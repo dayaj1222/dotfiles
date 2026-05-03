@@ -1,0 +1,65 @@
+[opener]
+image = [
+    { run = 'feh "$@"', orphan = true, desc = "Images (feh)" }
+]
+video = [
+    { run = 'mpv "$@"', orphan = true, desc = "Video (mpv)" }
+]
+audio = [
+    { run = 'mpv "$@"', orphan = true, desc = "Audio (mpv)" }
+]
+pdf = [
+    { run = 'okular "$@"', orphan = true, desc = "PDF (okular)" }
+]
+epub = [
+    { run = 'kitty --class floating epy "$@"', orphan = true, desc = "EPUB (epy)" }
+]
+text = [
+    { run = 'kitty --class floating nvim "$@"', orphan = true, desc = "Text (nvim)" }
+]
+document = [
+    { run = 'xdg-open "https://docs.google.com/document/"', orphan = true, desc = "Google Docs" }
+]
+spreadsheet = [
+    { run = 'xdg-open "https://docs.google.com/spreadsheets/"', orphan = true, desc = "Google Sheets" }
+]
+presentation = [
+    { run = 'xdg-open "https://docs.google.com/presentation/"', orphan = true, desc = "Google Slides" }
+]
+torrent = [
+    { run = 'transmission-gtk "$@"', orphan = true, desc = "Torrent (Transmission)" }
+]
+browser = [
+    { run = 'zen-browser "$@"', orphan = true, desc = "Browser" }
+]
+
+[open]
+rules = [
+    { mime = "image/*", use = "image" },
+    { mime = "video/*", use = "video" },
+    { mime = "audio/*", use = "audio" },
+    { mime = "application/pdf",              use = "browser" },
+    { mime = "application/x-pdf",            use = "browser" },
+    { mime = "application/epub+zip",         use = "epub" },
+    # Word
+    { mime = "application/msword",           use = "document" },
+    { mime = "application/openxmlformats-officedocument.wordprocessingml.document", use = "document" },
+    # Excel
+    { mime = "application/vnd.ms-excel",     use = "spreadsheet" },
+    { mime = "application/openxmlformats-officedocument.spreadsheetml.sheet", use = "spreadsheet" },
+    # PowerPoint
+    { mime = "application/vnd.ms-powerpoint", use = "presentation" },
+    { mime = "application/openxmlformats-officedocument.presentationml.presentation", use = "presentation" },
+    # Torrent
+    { mime = "application/x-bittorrent",     use = "torrent" },
+    # Web (before text/*)
+    { mime = "text/html",                    use = "browser" },
+    { mime = "application/xhtml+xml",        use = "browser" },
+    # Text / code
+    { mime = "text/*",                       use = "text" },
+    { mime = "application/json",             use = "text" },
+    { mime = "application/xml",              use = "text" },
+    { mime = "application/javascript",       use = "text" },
+    { mime = "application/x-shellscript",    use = "text" },
+    { mime = "application/x-sh",             use = "text" },
+]

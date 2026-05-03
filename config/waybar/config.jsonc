@@ -1,0 +1,302 @@
+{
+    "layer": "top",
+    "spacing": 0,
+    "height": 0,
+    "margin-top": 6,
+    "margin-right": 6,
+    "margin-bottom": 0,
+    "margin-left": 6,
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "tray",
+        "cpu",
+        "temperature",
+        "memory",
+        "battery",
+        "backlight",
+        "network",
+        "pulseaudio",
+        "custom/power"
+    ],
+    "custom/launcher": {
+        "format": "",
+        "on-click": "fuzzel",
+        "tooltip": true
+    },
+
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "persistent-workspaces": {
+			"*": 5
+		},
+        "format-icons": {
+            "default": " ",
+            "urgent": "󱇎 ",
+            "active": " "
+        },
+        "on-scroll-up": "hyprctl dispatch workspace +1",
+		"on-scroll-down": "hyprctl dispatch workspace -1",
+    },
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "   {:%I:%M %p - %a, %d %b %Y}",
+        "tooltip": true
+},
+	"temperature": {
+		"thermal-zone": 1,
+		// "hwmon-path":
+		// "hwmon-path-abs":
+		// "input-filename":
+		// "warning-threshold":
+		"critical-threshold": 90,
+		"interval": 10,
+		// "format-warning":
+		"format-critical": "󰀦 {temperatureC}°C",
+		"format": "{icon} {temperatureC}°C",
+		"format-icons": [
+			"󱃃", "󰔏", "󱃂"
+		],
+		// "rotate":
+		"min-length": 6,
+		"max-length": 20,
+		// "align":
+		// "justify":
+		
+        "on-click": "kitty --class floating -e btop",
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-update":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "Temperature in Fahrenheit: {temperatureF}°F"
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
+	},
+	"cpu": {
+		"interval": 10,
+		"format": "󰍛 {usage}%",
+		"format-warning": "󰀨 {usage}%",
+		"format-critical": "󰀨 {usage}%",
+		// "format-icons":
+		"min-length": 6,
+		"max-length": 7,
+		// "align":
+		// "justify":
+		// "rotate":
+		"states": {
+			"warning": 75,
+			"critical": 90
+		},
+        "on-click": "kitty --class floating -e btop",
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-update":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		"tooltip": true
+		// "expand":
+	},
+	"memory": {
+		"interval": 10,
+		"format": "󰘚 {percentage}%",
+		"format-warning": "󰀧 {percentage}%",
+		"format-critical": "󰀧 {percentage}%",
+		// "format-icons":
+		// "rotate":
+		"states": {
+			"warning": 75,
+			"critical": 90
+		},
+		"min-length": 6,
+		"max-length": 7,
+		// "align":
+		// "justify":
+        "on-click": "kitty --class floating -e btop",
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-update":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "Memory Used: {used:0.0f}/{total:0.0f} GiB"
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
+	},
+	"battery": {
+		// "bat":
+		// "adapter":
+		// "design-capacity":
+		// "full-at":
+		// "interval":
+		"states": {
+			"warning": 20,
+			"critical": 10
+		},
+		"format": "{icon} {capacity}%",
+		"format-time": "{H}h {M}min",
+		"format-icons": [
+			"󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+		],
+		"format-charging": "󰉁 {capacity}%",
+		"min-length": 6,
+		"max-length": 7,
+		// "align":
+		// "justify":
+		// "rotate":
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-update":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "<b>Discharging</b>: {time}",
+		"tooltip-format-charging": "<b>Charging</b>: {time}",
+		// "weighted-average":
+		// "bat-compatibility":
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
+		"events": {
+			"on-discharging-warning": "notify-send 'Battery Low (20%)' -u critical -i 'battery-020' -h string:x-canonical-private-synchronous:battery",
+			"on-discharging-critical": "notify-send 'Battery Critical (10%)' -u critical -i 'battery-010' -h string:x-canonical-private-synchronous:battery",
+			"on-charging-100": "notify-send 'Battery Full (100%)' -i 'battery-100-charged' -h string:x-canonical-private-synchronous:battery"
+		}
+	},
+	"backlight": {
+		// "interval":
+		"format": "{icon} {percent}%",
+		"format-icons": [
+			"", "", "", "", "", "", "", "", ""
+		],
+		"min-length": 7,
+		"max-length": 7,
+		// "align":
+		// "justify":
+		// "rotate":
+		// "states":
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-update":
+        "on-scroll-up": "brightnessctl set +1%",
+        "on-scroll-down": "brightnessctl set 1%-",
+		// "smooth-scrolling-threshold":
+		// "reverse-scrolling":
+		// "reverse-mouse-scrolling":
+		// "scroll-step":
+		// "min-brightness":
+		// "tooltip":
+		"tooltip-format": "Screen Brightness"
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
+	},
+	"network": {
+		// "interface":
+		// "rfkill":
+		"interval": 10,
+		// "family":
+		"format": "󰤨",
+		"format-ethernet": "󰈀",
+		"format-wifi": "{icon}",
+		// "format-linked":
+		"format-disconnected": "󰤯",
+		"format-disabled": "󰤮",
+		// "format-alt":
+		"format-icons": [
+			"󰤟", "󰤢", "󰤥", "󰤨"
+		],
+		// "rotate":
+		"min-length": 2,
+		"max-length": 10,
+        "on-click": "kitty --class floating -e nmtui",
+		// "on-click-middle":
+		"on-click-right": "~/.config/waybar/scripts/network off",
+		// "align":
+		// "justify":
+		// "on-update":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "<b>Gateway</b>: {gwaddr}",
+		"tooltip-format-ethernet": "<b>Interface</b>: {ifname}",
+		"tooltip-format-wifi": "<b>Network</b>: {essid}\n<b>IP Addr</b>: {ipaddr}/{cidr}\n<b>Strength</b>: {signalStrength}%\n<b>Frequency</b>: {frequency} GHz",
+		"tooltip-format-disconnected": "Wi-Fi Disconnected",
+		"tooltip-format-disabled": "Wi-Fi Disabled"
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
+	},
+    "pulseaudio": {
+        "scroll-step": 1,
+        "max-volume": 150,
+        "format": "   {volume}%",
+        "format-bluetooth": " {volume}%",
+        "nospacing": 1,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/power": {
+        "format": "",
+        "on-click": "$HOME/.dotfiles/scripts/power-menu.sh",
+        "on-click-right": "systemctl suspend",
+        "tooltip": "Power Off",
+        "interval": 0
+    },
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		},
+		// "rotate":
+		"min-length": 3,
+		"max-length": 3,
+		// "align":
+		// "justify":
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-update":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format-activated": "<b>Idle Inhibitor</b>: Activated",
+		"tooltip-format-deactivated": "<b>Idle Inhibitor</b>: Deactivated",
+		"start-activated": false
+		// "timeout":
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
+	}
+}
+

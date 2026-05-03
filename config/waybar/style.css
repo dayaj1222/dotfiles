@@ -1,0 +1,135 @@
+@import url("/home/daya/.cache/wal/colors-waybar.css");
+
+/* ── Variables ─────────────────────────────────────────── */
+* {
+    border: none;
+    min-height: 0;
+    font-family: "JetBrains Nerd Font Mono";
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0;
+}
+
+/* ── Bar ────────────────────────────────────────────────── */
+window#waybar {
+    background: @background;
+    border: 2px solid @color5;
+    border-radius: 5px;
+}
+
+/* ── Tooltips ───────────────────────────────────────────── */
+tooltip {
+    background-color: @background;
+    border: 2px solid @color5;
+    border-radius: 8px;
+    font-size: 13px;
+}
+tooltip label {
+    margin: 8px;
+    color: @foreground;
+}
+
+/* ── Workspaces ─────────────────────────────────────────── */
+#workspaces {
+    border-radius: 4px;
+}
+#workspaces button {
+    all: initial;
+    font-size: 20px;
+    min-width: 0;
+    padding: 2px 4px;
+    margin-right: 2px;
+    color: @foreground;
+    box-shadow: inset 0 -3px transparent;
+}
+#workspaces button.active {
+    font-size: 24px;
+    color: @color5;
+}
+#workspaces button.urgent {
+    font-size: 20px;
+    color: @color7;
+}
+
+/* ── Module base ────────────────────────────────────────── */
+#clock,
+#tray,
+#cpu,
+#memory,
+#battery,
+#network,
+#backlight,
+#temperature,
+#pulseaudio,
+#language,
+#idle_inhibitor,
+#custom-power {
+    margin: 6px 6px 6px 0;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+/* ── Module colors ──────────────────────────────────────── */
+#clock {
+    background-color: @color5;
+    border: 2px solid @color5;
+    color: @background;
+}
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#battery,
+#temperature,
+#tray,
+#backlight,
+#language,
+#idle_inhibitor {
+    background-color: @color0;
+    border: 1px solid @color5;
+    color: @foreground;
+}
+
+/* ── Module sizing ──────────────────────────────────────── */
+#network {
+    min-width: 20px;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+#idle_inhibitor{
+    padding-left: 2px;
+}
+#language  { min-width: 20px; }
+
+/* ── States ─────────────────────────────────────────────── */
+#cpu.critical,
+#memory.critical {
+    color: @color1;
+    border-color: @color1;
+}
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+    color: @color1;
+    border-color: @color1;
+}
+
+/* ── Idle inhibitor ─────────────────────────────────────── */
+#idle_inhibitor.activated {
+    color: #a6e3a1;
+    border-color: #a6e3a1;
+}
+#idle_inhibitor.deactivated {
+    color: #585b70;
+    border-color: @color5;
+}
+
+/* ── Icons only (no pill) ───────────────────────────────── */
+#custom-launcher,
+#custom-power {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 20px;
+    color: @foreground;
+    transition: none;
+}

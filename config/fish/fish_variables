@@ -1,0 +1,5 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export --path PATH:/home/daya/\x2elocal/bin\x1e/home/daya/\x2edotfiles/scripts\x1e/home/daya/\x2enpm/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/usr/lib/rustup/bin\x1e/opt/android\x2dsdk/platform\x2dtools
+SETUVAR __fish_initialized:4300
+SETUVAR fish_user_paths:/home/daya/\x2elocal/bin\x1e/home/daya/\x2edotfiles/scripts\x1e/home/daya/\x2enpm/bin

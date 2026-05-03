@@ -1,0 +1,29 @@
+# feh custom vim-style keybindings
+# Move around image
+scroll_left h
+scroll_right l
+scroll_up k
+scroll_down j
+
+# Zoom in/out
+zoom_in C-j
+zoom_out C-k
+zoom_default d
+zoom_fit s
+
+# Image navigation
+next_img n Right space
+prev_img p Left BackSpace
+
+# Toggle filenames
+toggle_filenames f
+
+# Quit
+quit q
+
+# Menu navigation (optional, for completeness)
+menu_parent H Left
+menu_child  L Right
+menu_down   J Down
+menu_up     K Up
+menu_select Return space
