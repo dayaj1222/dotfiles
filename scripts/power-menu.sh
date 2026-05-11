@@ -10,7 +10,7 @@ case $action in
     " Shutdown")   systemctl poweroff ;;
     " Reboot")     systemctl reboot ;;
     " Suspend")    systemctl suspend ;;
-    "󰍃 Logout")     hyprctl dispatch exit ;;
+    "󰍃 Logout")     hyprctl dispatch 'hl.dsp.exit()' ;;
     "󰗻 Lock Screen") hyprlock ;;
     " Hibernate")  systemctl hibernate ;;
     *) exit 0 ;;

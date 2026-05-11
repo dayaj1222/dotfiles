@@ -53,7 +53,8 @@
     },
     "clock": {
         "format": "   {:%I:%M %p - %a, %d %b %Y}",
-        "tooltip": true
+        "tooltip": true,
+        "interval": 60
 },
 	"temperature": {
 		"thermal-zone": 1,
@@ -261,7 +262,8 @@
         "format-bluetooth": " {volume}%",
         "nospacing": 1,
         "on-click": "pavucontrol",
-        "tooltip": false
+        "tooltip": false,
+        "interval": 120
     },
     "custom/power": {
         "format": "",

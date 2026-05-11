@@ -40,6 +40,7 @@ apply_wallpaper() {
         fi
 
         notify-send -t 3000 "Wallpaper Changed" "Set to: $wallpaper_name" -i "$wallpaper_path"
+        hyprctl reload
         return 0
     else
         notify-send -t 1000 "Error" "Failed to set wallpaper" -u critical
