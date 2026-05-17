@@ -5,7 +5,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 
 	hl.exec_cmd("sh -c 'swaybg -i \"$(cat ~/.cache/wal/wal)\"'")
-	hl.exec_cmd("mako --config ~/.cache/wal/mako")
+	hl.exec_cmd("mako")
 	hl.exec_cmd("waybar")
 
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'catppuccin-mocha-blue-standard+default'")

@@ -18,7 +18,7 @@ return function(p)
 	hl.bind(mod .. " + Space", hl.dsp.exec_cmd(p.menu))
 
 	-- Notifications
-	hl.bind("CTRL + Space", hl.dsp.exec_cmd("makoctl dismiss"))
+	hl.bind("CTRL + Space", hl.dsp.exec_cmd("makoctl mode -t do-not-disturb"))
 
 	-- Reload / Exit
 	hl.bind(mod .. " + R", hl.dsp.exec_cmd("hyprctl reload"))

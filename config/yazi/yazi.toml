@@ -9,7 +9,7 @@ audio = [
     { run = 'mpv "$@"', orphan = true, desc = "Audio (mpv)" }
 ]
 pdf = [
-    { run = 'okular "$@"', orphan = true, desc = "PDF (okular)" }
+    { run = 'zathura "$@"', orphan = true, desc = "PDF (okular)" }
 ]
 epub = [
     { run = 'kitty --class floating epy "$@"', orphan = true, desc = "EPUB (epy)" }
@@ -38,7 +38,7 @@ rules = [
     { mime = "image/*", use = "image" },
     { mime = "video/*", use = "video" },
     { mime = "audio/*", use = "audio" },
-    { mime = "application/pdf",              use = "browser" },
+    { mime = "application/pdf",              use = ["pdf", "browser"]},
     { mime = "application/x-pdf",            use = "browser" },
     { mime = "application/epub+zip",         use = "epub" },
     # Word

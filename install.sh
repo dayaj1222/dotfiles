@@ -16,7 +16,7 @@ WALLPAPER_TARGET="$HOME/Pictures/wallpapers"
 
 # Packages to install with paru (edit as needed)
 apps=(
-btop brave-bin kitty mako nvim ripgrep p7zip cava hyprland hypridle hyprlock hyprpwcenter hyprsunset xdg-desktop-portal-hyprland waybar fuzzel python uv mpv swappy xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk slurp imagemagick grim ttf-jetbrains-mono-nerd power-profiles-daemon brightnessctl pipewire pipewire-pulse wireplumber pavucontrol noto-fonts noto-fonts-emoji fish starship libnotify yazi unzip lazygit fd fzf swaybg wl-clipboard cliphist catppuccin-gtk-theme-mocha papirus-icon-theme imv kvantummanager
+btop brave-bin kitty mako nvim ripgrep p7zip cava hyprland hypridle hyprlock hyprpwcenter hyprsunset hyprqt6engine xdg-desktop-portal-hyprland waybar fuzzel python uv mpv swappy xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk slurp imagemagick grim ttf-jetbrains-mono-nerd power-profiles-daemon brightnessctl pipewire pipewire-pulse wireplumber pavucontrol noto-fonts noto-fonts-emoji fish starship libnotify yazi unzip lazygit fd fzf swaybg wl-clipboard cliphist catppuccin-gtk-theme-mocha papirus-icon-theme imv kvantummanager
 )
 
 # Packages to install with uv (edit as needed)

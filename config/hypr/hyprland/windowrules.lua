@@ -27,7 +27,7 @@ hl.window_rule({
 	match = { class = "Spotify" },
 	float = true,
 	size = "1050 650",
-	move = "15  15",
+	center = true,
 	border_size = 3,
 })
 
@@ -37,7 +37,7 @@ hl.window_rule({
 	match = { class = "thunar" },
 	float = true,
 	size = "1000 700",
-	move = center,
+	center = true,
 	border_size = 2,
 })
 
@@ -47,8 +47,8 @@ hl.window_rule({
 	match = { class = "mpv" },
 	float = true,
 	size = "1000 700",
-	move = center,
 	border_size = 2,
+	center = true,
 })
 
 -- Swappy
@@ -56,8 +56,8 @@ hl.window_rule({
 	name = "swappy-float",
 	match = { class = "swappy" },
 	float = true,
-	move = center,
 	border_size = 2,
+	center = true,
 })
 
 -- feh
@@ -65,8 +65,8 @@ hl.window_rule({
 	name = "feh-float",
 	match = { class = "feh" },
 	float = true,
-	move = center,
 	border_size = 2,
+	center = true,
 })
 
 -- Veracrypt
@@ -91,8 +91,8 @@ hl.window_rule({
 	match = { class = "org.pulseaudio.pavucontrol" },
 	float = true,
 	size = "800 600",
-	move = center,
 	border_size = 2,
+	center = true,
 })
 
 -- Generic floating class
@@ -101,8 +101,8 @@ hl.window_rule({
 	match = { class = "floating" },
 	float = true,
 	size = "1000 700",
-	move = center,
 	border_size = 2,
+	center = true,
 })
 
 -- Copilot panel
@@ -111,7 +111,7 @@ hl.window_rule({
 	match = { class = "copilot-kitty" },
 	float = true,
 	size = "500 990",
-	move = "1402  70",
+	center = true,
 })
 
 -- nmtui
@@ -119,8 +119,8 @@ hl.window_rule({
 	name = "nmtui-float",
 	match = { title = "nmtui" },
 	float = true,
-	move = center,
 	workspace = "99",
+	center = true,
 })
 
 -- MComix
@@ -129,8 +129,8 @@ hl.window_rule({
 	match = { class = "MComix" },
 	float = true,
 	size = "1200 800",
-	move = center,
 	border_size = 2,
+	center = true,
 })
 
 -- Transmission
@@ -139,8 +139,8 @@ hl.window_rule({
 	match = { class = ".*transmission.*" },
 	float = true,
 	size = "800 600",
-	move = center,
 	border_size = 2,
+	center = true,
 })
 
 -- nwg-look
@@ -149,7 +149,7 @@ hl.window_rule({
 	match = { class = "nwg-look" },
 	float = true,
 	size = "800 600",
-	move = center,
+	center = true,
 })
 
 -- Kvantum manager
@@ -158,7 +158,7 @@ hl.window_rule({
 	match = { class = "kvantummanager" },
 	float = true,
 	size = "800 600",
-	move = center,
+	center = true,
 })
 
 -- xdg-desktop-portal-gtk
@@ -166,6 +166,6 @@ hl.window_rule({
 	name = "xdg-desktop-portal-gtk",
 	match = { class = "xdg-desktop-portal-gtk" },
 	float = true,
-	size = "600 600",
-	move = center,
+	size = "1000 600",
+	center = true,
 })

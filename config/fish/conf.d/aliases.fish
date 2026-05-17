@@ -37,3 +37,6 @@ alias dls='aria2c --conf-path ~/.config/aria2/aria2.conf --bt-sequential-unwante
 # Misc
 alias h='history'
 alias j='jobs'
+
+# TLP
+alias fullcharge='sudo tlp fullcharge'
