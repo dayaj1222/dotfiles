@@ -1,9 +1,9 @@
 return {
 	term = "kitty",
-	browser = "brave",
+	browser = "zen-browser",
 	fileManager = "kitty --class floating -e yazi",
-	sysMonitor = "kitty --class btop -e btop",
-	editor = "kitty --class neovim -e nvim",
-	music = "kitty --class floating -e termusic",
+	sysMonitor = "kitty --class floating -e btop",
+	editor = "kitty --class floating -e nvim",
+	music = "xdg-open https://open.spotify.com/",
 	menu = "fuzzel",
 }

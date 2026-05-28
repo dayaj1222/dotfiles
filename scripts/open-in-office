@@ -1,0 +1,57 @@
+#!/bin/bash
+# open-in-onedrive.sh — Upload a local file to OneDrive and open it in the browser
+set -euo pipefail
+
+# ── Configuration ────────────────────────────────────────────────────────────
+REMOTE="onedrive"
+UPLOAD_DIR="${REMOTE}:.tmp_uploads"
+BROWSER="${BROWSER:-zen-browser}"
+# ─────────────────────────────────────────────────────────────────────────────
+
+usage() {
+    echo "Usage: $(basename "$0") <file>" >&2
+    echo "       Uploads a .docx/.xlsx/.pptx (and variants) to OneDrive and opens it." >&2
+    exit 1
+}
+
+die() { echo "ERROR: $*" >&2; exit 1; }
+
+# ── Argument validation ───────────────────────────────────────────────────────
+[[ $# -eq 1 ]] || usage
+FILE_PATH="$1"
+[[ -f "$FILE_PATH" ]] || die "File not found: $FILE_PATH"
+
+FILE_NAME="$(basename "$FILE_PATH")"
+EXTENSION="${FILE_NAME##*.}"
+EXTENSION="${EXTENSION,,}"
+
+# ── Extension validation ──────────────────────────────────────────────────────
+case "$EXTENSION" in
+    xlsx|xls|csv|pptx|ppt|docx|doc|txt|rtf|odt)
+        : # supported
+        ;;
+    *)
+        die "Unsupported file type: .$EXTENSION"
+        ;;
+esac
+
+# ── Upload ────────────────────────────────────────────────────────────────────
+echo "Uploading '$FILE_NAME' to $UPLOAD_DIR ..."
+rclone copyto "$FILE_PATH" "$UPLOAD_DIR/$FILE_NAME" \
+    --ignore-checksum \
+    --verbose
+
+# ── Get shareable URL via rclone link ─────────────────────────────────────────
+# rclone link generates a OneDrive share URL; we convert it to an edit link
+echo "Fetching URL ..."
+SHARE_URL="$(rclone link "$UPLOAD_DIR/$FILE_NAME")"
+
+[[ -n "$SHARE_URL" ]] || die "Could not retrieve URL for '$FILE_NAME'."
+
+# OneDrive share URLs end in ?e=... — swap embed param to open in edit mode
+# Works for both personal (1drv.ms) and business (sharepoint.com) URLs
+EDIT_URL="${SHARE_URL/\?e=*/?action=edit}"
+
+# ── Open in browser ───────────────────────────────────────────────────────────
+echo "Opening: $EDIT_URL"
+"$BROWSER" "$EDIT_URL"

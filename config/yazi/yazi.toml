@@ -1,31 +1,28 @@
 [opener]
 image = [
-    { run = 'feh "$@"', orphan = true, desc = "Images (feh)" }
+    { run = 'feh "$@"', orphan = true, desc = "Feh" }
 ]
-video = [
-    { run = 'mpv "$@"', orphan = true, desc = "Video (mpv)" }
-]
-audio = [
-    { run = 'mpv "$@"', orphan = true, desc = "Audio (mpv)" }
+media = [
+    { run = 'mpv "$@"', orphan = true, desc = "MPV" }
 ]
 pdf = [
-    { run = 'zathura "$@"', orphan = true, desc = "PDF (okular)" }
+    { run = 'zathura "$@"', orphan = true, desc = "Zathura" }
 ]
 epub = [
-    { run = 'kitty --class floating epy "$@"', orphan = true, desc = "EPUB (epy)" }
+    { run = 'kitty --class floating epy "$@"', orphan = true, desc = "Epy" }
 ]
 text = [
-    { run = 'kitty --class floating nvim "$@"', orphan = true, desc = "Text (nvim)" }
+    { run = 'kitty --class floating nvim "$@"', orphan = true, desc = "nvim" }
 ]
-document = [
-    { run = 'xdg-open "https://docs.google.com/document/"', orphan = true, desc = "Google Docs" }
+
+google = [
+    { run = '/home/daya/.dotfiles/scripts/open-in-gdocs.sh "$@"', orphan = true, desc = "Google Workspace" }
 ]
-spreadsheet = [
-    { run = 'xdg-open "https://docs.google.com/spreadsheets/"', orphan = true, desc = "Google Sheets" }
+
+office = [
+    {run = '/home/daya/.dotfiles/scripts/open-in-office "$@"', orphan = true, desc = "MS Office"}
 ]
-presentation = [
-    { run = 'xdg-open "https://docs.google.com/presentation/"', orphan = true, desc = "Google Slides" }
-]
+
 torrent = [
     { run = 'transmission-gtk "$@"', orphan = true, desc = "Torrent (Transmission)" }
 ]
@@ -43,13 +40,13 @@ rules = [
     { mime = "application/epub+zip",         use = "epub" },
     # Word
     { mime = "application/msword",           use = "document" },
-    { mime = "application/openxmlformats-officedocument.wordprocessingml.document", use = "document" },
+    { mime = "application/openxmlformats-officedocument.wordprocessingml.document", use = ["google","office"] },
     # Excel
     { mime = "application/vnd.ms-excel",     use = "spreadsheet" },
-    { mime = "application/openxmlformats-officedocument.spreadsheetml.sheet", use = "spreadsheet" },
+    { mime = "application/openxmlformats-officedocument.spreadsheetml.sheet", use = ["google","office"] },
     # PowerPoint
     { mime = "application/vnd.ms-powerpoint", use = "presentation" },
-    { mime = "application/openxmlformats-officedocument.presentationml.presentation", use = "presentation" },
+    { mime = "application/openxmlformats-officedocument.presentationml.presentation", use = ["google","office"] },
     # Torrent
     { mime = "application/x-bittorrent",     use = "torrent" },
     # Web (before text/*)

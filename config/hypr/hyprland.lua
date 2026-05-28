@@ -12,3 +12,6 @@ require("hyprland.autostart")
 
 require("hyprland.keybinds")(programs)
 require("hyprland.windowrules")
+
+-- For Noctalia Color templates
+require("noctalia")

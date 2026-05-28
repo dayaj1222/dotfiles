@@ -61,9 +61,3 @@ clipboard_control         write-clipboard write-primary
 
 scrollback_lines 1000
 
-
-
-# BEGIN_KITTY_THEME
-# Noctalia
-include current-theme.conf
-# END_KITTY_THEME

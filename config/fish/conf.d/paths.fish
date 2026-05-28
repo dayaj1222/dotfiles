@@ -5,3 +5,4 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.npm/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.dotfiles/scripts
+fish_add_path $HOME/go/bin/

@@ -1,5 +1,3 @@
-local center = "(monitor_w-window_w)/2 (monitor_h-window_h)/2"
-
 -- Suppress maximize requests
 hl.window_rule({
 	name = "suppress-maximize-events",
@@ -107,11 +105,11 @@ hl.window_rule({
 
 -- Copilot panel
 hl.window_rule({
-	name = "copilot-kitty-panel",
-	match = { class = "copilot-kitty" },
+	name = "Hermes",
+	match = { class = "hermes" },
 	float = true,
 	size = "500 990",
-	center = true,
+	move = { 1400, 70 },
 })
 
 -- nmtui
@@ -168,4 +166,15 @@ hl.window_rule({
 	float = true,
 	size = "1000 600",
 	center = true,
+})
+
+-- Noctalia
+hl.layer_rule({
+	name = "noctalia",
+	match = {
+		namespace = "^noctalia-(bar-.+|notification|dock|panel)$",
+	},
+	ignore_alpha = 0.5,
+	blur = true,
+	blur_popups = true,
 })
